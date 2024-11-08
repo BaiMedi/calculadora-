@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Tarifas de Gestión de Redes Sociales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .calculator h1 {
+            font-size: 1.5rem;
+            color: #333;
+            text-align: center;
+        }
+        .calculator label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        .calculator input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .calculator button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .calculator button:hover {
+            background-color: #218838;
+        }
+        .results {
+            margin-top: 20px;
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <h1>Calculadora de Tarifas Mensuales</h1>
+    <label for="clientes">Número de Clientes:</label>
+    <input type="number" id="clientes" placeholder="Introduce el número de clientes" required>
+
+    <label for="tarifa">Tarifa por Cliente ($):</label>
+    <input type="number" id="tarifa" placeholder="Introduce la tarifa por cliente" required>
+
+    <label for="horas">Horas de Trabajo por Semana:</label>
+    <input type="number" id="horas" placeholder="Introduce las horas de trabajo por semana" required>
+
+    <button onclick="calcularIngresos()">Calcular Ingresos</button>
+
+    <div class="results" id="resultados">
+        <p>Ingresos Mensuales: $<span id="ingresosMensuales">0.00</span></p>
+    </div>
+</div>
+
+<script>
+    function calcularIngresos() {
+        // Obtener los valores de los inputs
+        const clientes = document.getElementById("clientes").value;
+        const tarifa = document.getElementById("tarifa").value;
+        const horas = document.getElementById("horas").value;
+        
+        // Validar que todos los campos estén completos
+        if (!clientes || !tarifa || !horas) {
+            alert("Por favor, completa todos los campos.");
+            return;
+        }
+
+        // Calcular ingresos mensuales
+        const ingresosMensuales = clientes * tarifa;
+        document.getElementById("ingresosMensuales").innerText = ingresosMensuales.toFixed(2);
+    }
+</script>
+
+</body>
+</html>
